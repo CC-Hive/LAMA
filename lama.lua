@@ -1,3 +1,31 @@
+-- LAMA API available under the MIT license from "https://raw.githubusercontent.com/KingofGamesYami/LAMA/master/lama.lua"
+
+--[[ The MIT License (MIT)
+
+-- Copyright (c) 2015 KingofGamesYami
+
+-- Permission is hereby granted, free of charge, to any person obtaining a copy
+-- of this software and associated documentation files (the "Software"), to deal
+-- in the Software without restriction, including without limitation the rights
+-- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-- copies of the Software, and to permit persons to whom the Software is
+-- furnished to do so, subject to the following conditions:
+
+-- The above copyright notice and this permission notice shall be included in all
+-- copies or substantial portions of the Software.
+
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+-- SOFTWARE.
+--]]
+
+-- Converted to be Require compatible by Lupus590 and released under the same MIT license.
+-- Look for REQUIRE_COMPAT in comments, the connected multi line comments are removed original stuff with the replacement under that.
+
 --Copy the default turtle directory
 local turtle = {}
 for k, v in pairs( _G.turtle ) do
@@ -14,9 +42,12 @@ if not fs.isDir( ".lama" ) then
 	fs.makeDir( ".lama" )
 end
 
+-- REQUIRE_COMPAT
+--[[
 --get the current env
 --anything declared as env.name will end up in the loaded API
-local env = getfenv()
+local env = getfenv() ]]
+local env = shell and {} or (_ENV or getfenv()) -- see https://github.com/lupus590/CC-Random-Code/blob/8cb3bd9b6e54c0176ff3e9418fc96b7866d3c963/src/dofile%20and%20loadAPI%20compatable%20API's.lua#L3
 
 local fuel = {}
 local facing = {}
@@ -232,3 +263,6 @@ fuel.load()
 fuel.save()
 position.save()
 facing.save()
+
+-- REQUIRE_COMPAT
+return env
